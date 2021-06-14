@@ -1,6 +1,7 @@
-# Getting Started with Create React App
-
+# Creating a Superchat App with React & Firebase by Fireship IO
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A quick personal run through of the awesome tutorial by Fireship
+https://youtu.be/zQyrwxMPm88
 
 ## Available Scripts
 
