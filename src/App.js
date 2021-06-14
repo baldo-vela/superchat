@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import './App.css';
 
 //Loads the Firebase SDK 
@@ -10,7 +10,6 @@ import 'firebase/auth'
 
 import { useAuthState }      from 'react-firebase-hooks/auth';
 import { useCollectionData }  from 'react-firebase-hooks/firestore';
-import { useState } from 'react/cjs/react.production.min';
 
 firebase.initializeApp({
   //Config Information Firebase console
