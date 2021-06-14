@@ -8,7 +8,7 @@ import 'firebase/firestore';
 //Authentication
 import 'firebase/auth'
 
-import { userAuthState }      from 'react-firebase-hooks/auth';
+import { useAuthState }      from 'react-firebase-hooks/auth';
 import { useCollectionData }  from 'react-firebase-hooks/firestore';
 
 firebase.initializeApp({
@@ -26,10 +26,11 @@ firebase.initializeApp({
 const auth = firebase.auth();
 const firestore = firebase.firestore();
 
-const [user] = userAuthState(auth);
-//When signed in, user is an object, else is null
 
 function App() {
+  const [user] = useAuthState(auth);
+  //When signed in, user is an object, else is null
+
   return (
     <div className="App">
       <header className="App-header">
@@ -51,6 +52,14 @@ function SignIn() {
   return (
     <button onClick={signInWithGoogle}>Sign in with Google </button>
   )
+}
+
+function SignOut() {
+  return auth.currentUser && (
+    <button onClick={() => auth.signOut()}>Sign Out</button>
+
+  )
+
 }
 
 function ChatRoom() {
