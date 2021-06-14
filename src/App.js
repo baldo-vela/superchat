@@ -35,7 +35,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        
+        <h1>⚛️🔥💬</h1>
+        <SignOut />
       </header>
       <section>
         {/* If user is defined show chat, else show sign in */}
@@ -65,7 +66,8 @@ function SignOut() {
 
 function ChatRoom() {
 
-  const dummy = useRef()
+  const dummy = useRef(null);
+  //"returns a mutable ref object whose .current property is initialized to the passed argument (initialValue). The returned object will persist for the full lifetime of the component." -React SDK 
 
   const messegesRef = firestore.collection('messages');
   const query = messegesRef.orderBy('createdAt').limit(25);
@@ -92,7 +94,6 @@ function ChatRoom() {
     setFormValue('');
 
     dummy.current.scrollIntoView({ behavior: 'smooth' })
-
   }
 
   return (
