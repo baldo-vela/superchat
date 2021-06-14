@@ -3,6 +3,33 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 A quick personal run through of the awesome tutorial by Fireship
 https://youtu.be/zQyrwxMPm88
 
+## Firestore Configuration
+``` 
+rules_version = '2';
+service cloud.firestore {
+    match /databases/{database}/documents {
+        match /{document=**} {
+            allow read, write: if false;
+            }
+        }
+
+        match /messages/{docId} {
+            allow read: if request.auth.uid != null;
+            allow create: if canCreateMessage();
+        }
+
+        function canCreateMessage() {
+            let isSignedIn = request.auth.uid != null;
+            let isOwner = request.auth.uid == request.resource.data.uid;
+
+            let isNotBanned = exists(
+                /databases/$(database)/documents/banned/$(request.auth.uid)
+            ) == false;
+
+            return isSignedIn && isOwner && isNotBanned;
+        }
+}
+```
 ## Available Scripts
 
 In the project directory, you can run:
