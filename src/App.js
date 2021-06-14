@@ -68,6 +68,7 @@ function ChatRoom() {
   const query = messegesRef.orderBy('createdAt').limit(25);
 
   const [messages] = useCollectionData(query, {idField: 'id'});
+  //listens for changes in the database collection in real time
 
   const [formValue, setFormValue] = useState('');
 
@@ -77,12 +78,14 @@ function ChatRoom() {
     const {uid, photoURL} = auth.currentUser;
 
     await messegesRef.add({
+      //writes the passed json to the database
       text: formValue,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       uid,
       photoURL
     });
 
+    //Resets the form for new messages 
     setFormValue('');
   }
 
