@@ -35,7 +35,10 @@ function App() {
       <header className="App-header">
         
       </header>
-
+      <section>
+        {/* If user is defined show chat, else show sign in */}
+        {user ? <ChatRoom /> : <SignIn />}
+      </section>
     </div>
   );
 }
