@@ -13,10 +13,21 @@ import { useCollectionData }  from 'react-firebase-hooks/firestore';
 
 firebase.initializeApp({
   //Config Information Firebase console
+    apiKey: "AIzaSyDWfqQ5N2hpU9IJVaQq6W0uUYVh-d-LRGI",
+    authDomain: "superchat-75a7f.firebaseapp.com",
+    projectId: "superchat-75a7f",
+    storageBucket: "superchat-75a7f.appspot.com",
+    messagingSenderId: "961545000043",
+    appId: "1:961545000043:web:17dc7c785a674ee4760d2e",
+    measurementId: "G-C3V2K20VFP"
+
 })
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
+
+const [user] = userAuthState(auth);
+//When signed in, user is an object, else is null
 
 function App() {
   return (
@@ -24,8 +35,11 @@ function App() {
       <header className="App-header">
         
       </header>
+
     </div>
   );
 }
+
+
 
 export default App;
